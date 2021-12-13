@@ -46,12 +46,71 @@ const postSchema = new Schema({
   length: Number,
   lure: String,
   comment: String,
-  file: String,
+  /*  date: String,
+  file: String, */
 });
 
 // Define new model in DB
 const PostModel = mongoose.model("post", postSchema);
 
+//****************** GET REQUESTS ********************/
+// App listens to GET REQUESTS
+app.get("/api/posts", (req, res) => {
+  // Log to see what got returned
+  console.log("Data requested came back OK from server");
+  PostModel.find((err, data) => {
+    res.json(data);
+    if (err) {
+      console.log("No posts found");
+    }
+  });
+});
+
+// Listen for GET to search form entries in DB
+app.get("/api/posts/:id", (req, res) => {
+  console.log(req.params.id);
+  // Checks DB with requested ID
+  PostModel.findById(req.params.id, (err, data) => {
+    // Send back data
+    res.json(data);
+    // Check if there are any errrs and display them
+    if (err) {
+      console.log("No posts....check your passed params!!!!");
+    }
+  });
+});
+
+//*******************EDIT REQUEST********************/
+// Edit a Record
+app.put("/api/posts/:id", (req, res) => {
+  console.log("Update post : " + req.params.id);
+  console.log(req.body);
+
+  PostModel.findByIdAndUpdate(
+    req.params.id,
+    req.body,
+    { new: true },
+    (err, data) => {
+      res.send(data);
+    }
+  );
+});
+
+//***************** DELETE REQEST*******************/
+// Delete a record
+app.delete("/api/posts/:id", (req, res) => {
+  console.log("Deleting:" + req.params.id);
+
+  // Set DB query with data what top delete
+  PostModel.deleteOne({ _id: req.params.id }, (err, data) => {
+    if (err) {
+      res.send(err);
+    }
+    res.send(data);
+  });
+});
+
+//*************** POST REQUESTS*******************/
 //Listen to POST request
 app.post("/api/posts", (req, res) => {
   // Log data passed to server
@@ -65,7 +124,8 @@ app.post("/api/posts", (req, res) => {
     length: req.body.length,
     lure: req.body.lure,
     comment: req.body.comment,
-    file: req.body.file,
+    /*    date: req.body.date,
+    file: req.body.file, */
   });
 
   // Prevents duplication of entries to DB

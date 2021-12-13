@@ -5,7 +5,7 @@ import { Form, Button, Container } from "react-bootstrap";
 // Import axios to communicate with Back End
 import axios from "axios";
 
-export class CreatePost extends React.Component {
+export class Edit extends React.Component {
   constructor() {
     super();
 
@@ -31,6 +31,26 @@ export class CreatePost extends React.Component {
       /*      Date: new Date(),
       File: "", */
     };
+  }
+
+  componentDidMount() {
+    console.log(this.props.match.params.id);
+    axios
+      .get("http://localhost:4000/api/posts/" + this.props.match.params.id)
+      .then((response) => {
+        this.setState({
+          _id: response.data._id,
+          Name: response.data.name,
+          Location: response.data.location,
+          Weight: response.data.weight,
+          Length: response.data.length,
+          Lure: response.data.lure,
+          Comment: response.data.comment,
+        });
+      })
+      .catch((err) => {
+        console.log(err);
+      });
   }
 
   // onChange functions for form Elements
@@ -80,18 +100,17 @@ export class CreatePost extends React.Component {
       length: this.state.Length,
       lure: this.state.Lure,
       comment: this.state.Comment,
+      _id: this.state._id,
       /*    date: this.state.Date,
       file: this.state.File, */
     };
 
-    // POST method to server
+    // EDIT method to server
     axios
-      .post("http://localhost:4000/api/posts", newPost)
-      .then((response) => {
-        console.log(response);
-      })
+      .put("http://localhost:4000/api/posts/" + this.state._id, newPost)
+      .then((res) => console.log(res.data))
       .catch((err) => {
-        console.log("Error in sending data" + err);
+        throw err;
       });
   }
 
@@ -156,27 +175,8 @@ export class CreatePost extends React.Component {
               />
             </Form.Group>
 
-            {/*      <Form.Group className="mb-3" controlId="date">
-              <Form.Label>Date of catch</Form.Label>
-              <Form.Control
-                type="date"
-                value={this.state.Date}
-                onChange={this.onChangeDate}
-              />
-            </Form.Group>
-
-            <Form.Group className="mb-3" controlId="length">
-              <Form.Label>Upload your file</Form.Label>
-              <Form.Control
-                type="file"
-                multiple={false}
-                value={this.state.File}
-                onChange={this.onChangeFile}
-              />
-            </Form.Group> */}
-
-            <Button variant="primary" type="submit" value="add">
-              Add Your Catch
+            <Button variant="primary" type="submit" value="Edit Movie">
+              Edit Post
             </Button>
           </Form>
         </Container>
