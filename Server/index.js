@@ -8,9 +8,16 @@ const app = express();
 const port = 4000;
 // Include Mongoose
 const mongoose = require("mongoose");
+// Include PATH
+const path = require("path");
 
 // Add CORS
 const cors = require("cors");
+// Config method to find index.html
+app.use(express.static(path.join(__dirname, "../build")));
+// Point to Static folder
+app.use("/static", express.static(path.join(__dirname, "build//static")));
+
 // Set app to use CORS
 app.use(cors());
 // Set up HEADERS to be used by CORS
@@ -146,6 +153,11 @@ app.post("/api/posts", (req, res) => {
 
   // Prevents duplication of entries to DB
   res.send("Item Added");
+});
+
+// Provide URL for Built App to run on server
+app.get("*", (req, res) => {
+  res.sendFile(path.join(__dirname + "/../build/index.html"));
 });
 
 // Set listen method for Debugging in console
