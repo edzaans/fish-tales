@@ -1,70 +1,41 @@
-# Getting Started with Create React App
+# Project description!
 
-This project was bootstrapped with [Create React App](https://github.com/facebook/create-react-app).
+Project allow users to browse through sections of WebApp. 
+Landing page is used as a root page to project with navigation, image carousel, album with pictures and general information about WebApp.
+User can navigate through various components and create new post with their ionformation that will be stored in MongoDB Cloud database.
+User can also see recent posts and update them. Only some user information can be edited, like name, comment etc. They are not allowed to edit original post creation time.
+Project was built with Mobile First approach, most of the styling is aimed at Mobile users although it is made responsive for devices with larger screens.
 
-## Available Scripts
+This app was built using React Framework.
+React allowed  to create a well structured code base using various scripting / programming languages in one place.
+It also allows for creating Frontnd and BackEnd codebase all in one app.
 
-In the project directory, you can run:
+To develop this project i used Class Components insted of Functional approach due to dependency version changes with latest updates.
 
-### `npm start`
+React BootStrap was used to create FrontEnd codebase, thus speeding up development process and keeping styling consistent. 
+Only small amount of custom CSS was required for this project.
 
-Runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+NodeJS was used to create server and communicate with database.
 
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
+NPM (Node Package Manager) was used to manage packages used by React Framework.
 
-### `npm test`
+MongoDB Atlas was used as a databse for this project and uses NoSql. 
 
-Launches the test runner in the interactive watch mode.\
-See the section about [running tests](https://facebook.github.io/create-react-app/docs/running-tests) for more information.
+# Getting Started
 
-### `npm run build`
+Recommended CLI - GitBash 
+Project uses NodeJS for BackEnd, make sure you have it installed.
+Project uses NPM, make sure you have it installed.
 
-Builds the app for production to the `build` folder.\
-It correctly bundles React in production mode and optimizes the build for the best performance.
+"https://nodejs.org/en/download/" install NodeJS
+"npm install -g npm" install NPM 
 
-The build is minified and the filenames include the hashes.\
-Your app is ready to be deployed!
+# Running the APP
 
-See the section about [deployment](https://facebook.github.io/create-react-app/docs/deployment) for more information.
+Clone project code from Main branch.
+Run "npm install" in CLI to install all dependencies.
+Once dependencies are installed 
 
-### `npm run eject`
 
-**Note: this is a one-way operation. Once you `eject`, you can’t go back!**
 
-If you aren’t satisfied with the build tool and configuration choices, you can `eject` at any time. This command will remove the single build dependency from your project.
 
-Instead, it will copy all the configuration files and the transitive dependencies (webpack, Babel, ESLint, etc) right into your project so you have full control over them. All of the commands except `eject` will still work, but they will point to the copied scripts so you can tweak them. At this point you’re on your own.
-
-You don’t have to ever use `eject`. The curated feature set is suitable for small and middle deployments, and you shouldn’t feel obligated to use this feature. However we understand that this tool wouldn’t be useful if you couldn’t customize it when you are ready for it.
-
-## Learn More
-
-You can learn more in the [Create React App documentation](https://facebook.github.io/create-react-app/docs/getting-started).
-
-To learn React, check out the [React documentation](https://reactjs.org/).
-
-### Code Splitting
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/code-splitting](https://facebook.github.io/create-react-app/docs/code-splitting)
-
-### Analyzing the Bundle Size
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size](https://facebook.github.io/create-react-app/docs/analyzing-the-bundle-size)
-
-### Making a Progressive Web App
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app](https://facebook.github.io/create-react-app/docs/making-a-progressive-web-app)
-
-### Advanced Configuration
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/advanced-configuration](https://facebook.github.io/create-react-app/docs/advanced-configuration)
-
-### Deployment
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/deployment](https://facebook.github.io/create-react-app/docs/deployment)
-
-### `npm run build` fails to minify
-
-This section has moved here: [https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify](https://facebook.github.io/create-react-app/docs/troubleshooting#npm-run-build-fails-to-minify)
