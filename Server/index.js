@@ -39,16 +39,20 @@ mongoose.connect(connectionString, { useNewUrlParser: true });
 
 // Define Mongo Schema
 const Schema = mongoose.Schema;
-const postSchema = new Schema({
-  name: String,
-  location: String,
-  weight: Number,
-  length: Number,
-  lure: String,
-  comment: String,
-  /*  date: String,
-  file: String, */
-});
+const postSchema = new Schema(
+  {
+    name: String,
+    location: String,
+    weight: Number,
+    length: Number,
+    lure: String,
+    comment: Array,
+    date: String,
+    image: String,
+    url: [String],
+  },
+  { timestamps: true }
+);
 
 // Define new model in DB
 const PostModel = mongoose.model("post", postSchema);
@@ -124,8 +128,9 @@ app.post("/api/posts", (req, res) => {
     length: req.body.length,
     lure: req.body.lure,
     comment: req.body.comment,
-    /*    date: req.body.date,
-    file: req.body.file, */
+    date: req.body.date,
+    url: req.body.url,
+    /* file: req.body.file, */
   });
 
   // Prevents duplication of entries to DB

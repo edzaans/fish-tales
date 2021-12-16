@@ -27,7 +27,7 @@ export class Edit extends React.Component {
       Weight: 0,
       Length: 0,
       Lure: "",
-      Comment: "",
+      Comment: [],
       /*      Date: new Date(),
       File: "", */
     };
@@ -46,6 +46,8 @@ export class Edit extends React.Component {
           Length: response.data.length,
           Lure: response.data.lure,
           Comment: response.data.comment,
+          Date: response.data.date,
+          File: response.data.file,
         });
       })
       .catch((err) => {
@@ -78,13 +80,13 @@ export class Edit extends React.Component {
     this.setState({ Comment: el.target.value });
   }
 
-  /*  onChangeDate(el) {
+  onChangeDate(el) {
     this.setState({ Date: el.target.value });
   }
 
   onChangeFile(el) {
     this.setState({ File: el.target.value });
-  } */
+  }
 
   // Submit function here
   onSubmit(el) {
@@ -101,8 +103,8 @@ export class Edit extends React.Component {
       lure: this.state.Lure,
       comment: this.state.Comment,
       _id: this.state._id,
-      /*    date: this.state.Date,
-      file: this.state.File, */
+      date: this.state.Date,
+      file: this.state.File,
     };
 
     // EDIT method to server
@@ -175,9 +177,12 @@ export class Edit extends React.Component {
               />
             </Form.Group>
 
-            <Button variant="primary" type="submit" value="Edit Movie">
+            <Button variant="primary" type="submit" value="Edit post">
               Edit Post
             </Button>
+            {/*    <Button variant="primary" type="submit" value="Edit Post">
+              Add comment
+            </Button> */}
           </Form>
         </Container>
       </div>

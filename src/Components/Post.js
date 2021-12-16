@@ -1,8 +1,11 @@
 import React from "react";
 // Import Card component from BootStrap
 import { Card, Button, ListGroupItem, ListGroup } from "react-bootstrap";
+
 import { Link } from "react-router-dom";
 import Axios from "axios";
+import Styles from "../Styles/Post.module.css";
+import logo from "../Images/Header_image.jpg";
 
 export class Post extends React.Component {
   constructor() {
@@ -41,34 +44,59 @@ export class Post extends React.Component {
   render() {
     // Return Card component
     return (
-      <div className="mx-5">
-        <Card style={{ width: "15rem" }}>
-          <Card.Img variant="top" src={this.props.post.file} />
-          <Card.Body>
-            <Card.Title>
-              <span>Caught by : </span>
-              {this.props.post.name}
-            </Card.Title>
-            <Card.Text>
-              <span>Location : </span>
-              {this.props.post.location}
-            </Card.Text>
-          </Card.Body>
-          <ListGroup className="list-group-flush">
-            <ListGroupItem>Weight : {this.props.post.weight}</ListGroupItem>
-            <ListGroupItem>Length : {this.props.post.length}</ListGroupItem>
-            <ListGroupItem>Lure : {this.props.post.lure}</ListGroupItem>
-            <ListGroupItem>Comment : {this.props.post.comment}</ListGroupItem>
-          </ListGroup>
-          <Card.Body>
-            <Button onClick={this.deletePost} className="btn btn-danger mx-2">
-              Delete
-            </Button>
-          </Card.Body>
-          <Link to={"/edit/" + this.props.post._id} className="btn btn-primary">
-            Edit
-          </Link>
-        </Card>
+      <div class="mt-5" className={Styles.post}>
+        <div
+          class="col-sm-12 col-md-8 col-lg-8 mx-auto"
+          className={Styles.card_body}
+        >
+          <Card>
+            <Card.Img
+              className={Styles.post_img}
+              variant="top"
+              src={this.props.post.url}
+            />
+            <Card.Body>
+              <Card.Title>
+                <span>Caught by : </span>
+                {this.props.post.name}
+              </Card.Title>
+              <Card.Text>
+                <span>Location : </span>
+                {this.props.post.location}
+              </Card.Text>
+            </Card.Body>
+            <ListGroup className="list-group-flush">
+              <ListGroupItem>
+                Weight : {this.props.post.weight} gr
+              </ListGroupItem>
+              <ListGroupItem>
+                Length : {this.props.post.length} cm
+              </ListGroupItem>
+              <ListGroupItem>Lure : {this.props.post.lure}</ListGroupItem>
+              <ListGroupItem>Date : {this.props.post.date}</ListGroupItem>
+            </ListGroup>
+            <Card.Body class="mx-auto">
+              <div>
+                <h4>User comment</h4>
+                <div className={Styles.post_comment}>
+                  {this.props.post.comment}
+                </div>
+              </div>
+              <Button
+                onClick={this.deletePost}
+                className="btn btn-danger mx-2 my-2"
+              >
+                Delete
+              </Button>
+              <Link
+                to={"/edit/" + this.props.post._id}
+                className="btn btn-primary"
+              >
+                Edit
+              </Link>
+            </Card.Body>
+          </Card>
+        </div>
       </div>
     );
   }

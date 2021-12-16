@@ -1,5 +1,5 @@
 import React from "react";
-import { Container, Row, Col, Stack } from "react-bootstrap";
+import { Container, Row, Col } from "react-bootstrap";
 import { Post } from "./Post";
 
 export class Posts extends React.Component {

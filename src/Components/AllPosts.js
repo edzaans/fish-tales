@@ -1,6 +1,7 @@
 import React from "react";
 import axios from "axios";
 import { Posts } from "./Posts";
+import Styles from "../Styles/Post.module.css";
 
 export class AllPosts extends React.Component {
   constructor() {
@@ -50,8 +51,16 @@ export class AllPosts extends React.Component {
 
   render() {
     return (
-      <div>
-        <Posts posts={this.state.posts} reloadPosts={this.reloadPosts}></Posts>
+      <div class="container">
+        <div class="row">
+          <div className="col-12 text-center">
+            <h3 className={Styles.form_h3}>Recent catches </h3>
+          </div>
+          <Posts
+            posts={this.state.posts}
+            reloadPosts={this.reloadPosts}
+          ></Posts>
+        </div>
       </div>
     );
   }

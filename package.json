@@ -16,8 +16,11 @@
     "cors": "^2.8.5",
     "express": "^4.17.1",
     "firebase": "^9.6.1",
+    "gridfs-stream": "^1.1.1",
     "moment": "^2.29.1",
     "mongoose": "^6.1.1",
+    "multer": "^1.4.4",
+    "multer-gridfs-storage": "^5.0.2",
     "react": "^17.0.2",
     "react-bootstrap": "^2.0.3",
     "react-dom": "^17.0.2",
@@ -26,6 +29,7 @@
     "react-scripts": "4.0.3",
     "redux": "^4.1.2",
     "redux-thunk": "^2.4.1",
+    "sass": "^1.45.0",
     "web-vitals": "^1.1.2"
   },
   "scripts": {

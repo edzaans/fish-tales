@@ -6,7 +6,7 @@ import logo from "../Images/Header_image.jpg";
 export class Header extends React.Component {
   render() {
     return (
-      <div>
+      <div class="container fluid">
         <Navbar collapseOnSelect expand="lg" bg="dark" variant="dark">
           <Container>
             <Navbar.Brand href="#home">
