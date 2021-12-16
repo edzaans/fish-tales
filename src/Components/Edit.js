@@ -1,3 +1,4 @@
+// Import React
 import React from "react";
 
 // Import Components to be used from BootStrap library
@@ -5,11 +6,13 @@ import { Form, Button, Container } from "react-bootstrap";
 // Import axios to communicate with Back End
 import axios from "axios";
 
+// Main Edit class
 export class Edit extends React.Component {
+  // Constructor and super() to receive props
   constructor() {
     super();
 
-    // Bind form events
+    // Bind all form events
     this.onSubmit = this.onSubmit.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
@@ -17,8 +20,6 @@ export class Edit extends React.Component {
     this.onChangeLength = this.onChangeLength.bind(this);
     this.onChangeLure = this.onChangeLure.bind(this);
     this.onChangeComment = this.onChangeComment.bind(this);
-    /*  this.onChangeDate = this.onChangeDate.bind(this);
-    this.onChangeFile = this.onChangeFile.bind(this); */
 
     // Set initial state with properties to be stored
     this.state = {
@@ -33,12 +34,19 @@ export class Edit extends React.Component {
     };
   }
 
+  // didMount function  to be run when component is activated
   componentDidMount() {
+    // Test what data is passed
     console.log(this.props.match.params.id);
+    // Get request from server with matched params
     axios
+      // HTTP GET method to server
       .get("http://localhost:4000/api/posts/" + this.props.match.params.id)
+      // Promise resolved successfully
       .then((response) => {
+        // Set returned data to Component State
         this.setState({
+          // Add ID to state to use for post finding with ID param
           _id: response.data._id,
           Name: response.data.name,
           Location: response.data.location,
@@ -50,6 +58,7 @@ export class Edit extends React.Component {
           File: response.data.file,
         });
       })
+      // Error catch block
       .catch((err) => {
         console.log(err);
       });
@@ -91,10 +100,10 @@ export class Edit extends React.Component {
   // Submit function here
   onSubmit(el) {
     // Prevents page reload when form is submitted
-    // el.preventDefault();
-    alert(`New catch added by : ${this.state.Name}`);
+    el.preventDefault();
+    alert(`Post edited : ${this.state.Name}`);
 
-    // New post object sent with Axios
+    // New post object sent with Axios to MongoDB
     const newPost = {
       name: this.state.Name,
       location: this.state.Location,
@@ -109,16 +118,21 @@ export class Edit extends React.Component {
 
     // EDIT method to server
     axios
+      // HTTP PUT method to server
       .put("http://localhost:4000/api/posts/" + this.state._id, newPost)
+      // Promise resolved
       .then((res) => console.log(res.data))
+      // Error catch block
       .catch((err) => {
         throw err;
       });
   }
 
+  // Main RENDER method
   render() {
     return (
       <div>
+        {/* Form for Edit Component */}
         <Container>
           {/* Working Form with BootStrap styles */}
           <Form onSubmit={this.onSubmit}>

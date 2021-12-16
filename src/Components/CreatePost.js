@@ -1,16 +1,19 @@
+// Import React
 import React from "react";
 
 // Import Components to be used from BootStrap library
 import { Form, Button, Container } from "react-bootstrap";
 import Styles from "../Styles/Post.module.css";
+
 // Import axios to communicate with Back End
 import axios from "axios";
 
+// Main class for Post Creation
 export class CreatePost extends React.Component {
   constructor() {
     super();
 
-    // Bind form events
+    // Bind for each Form element
     this.onSubmit = this.onSubmit.bind(this);
     this.onChangeName = this.onChangeName.bind(this);
     this.onChangeLocation = this.onChangeLocation.bind(this);
@@ -19,7 +22,6 @@ export class CreatePost extends React.Component {
     this.onChangeLure = this.onChangeLure.bind(this);
     this.onChangeComment = this.onChangeComment.bind(this);
     this.onChangeDate = this.onChangeDate.bind(this);
-    /* this.onChangeFile = this.onChangeFile.bind(this); */
     this.onChangeUrl = this.onChangeUrl.bind(this);
 
     // Set initial state with properties to be stored
@@ -65,10 +67,6 @@ export class CreatePost extends React.Component {
     this.setState({ Date: el.target.value });
   }
 
-  /*   onChangeFile(el) {
-    this.setState({ File: el.target.value });
-  }
- */
   onChangeUrl(el) {
     this.setState({ Url: el.target.value });
   }
@@ -95,17 +93,21 @@ export class CreatePost extends React.Component {
     // POST method to server
     axios
       .post("http://localhost:4000/api/posts", newPost)
+      // Promise call
       .then((response) => {
         console.log(response);
       })
+      // Catch block
       .catch((err) => {
         console.log("Error in sending data" + err);
       });
   }
 
+  // Render method
   render() {
     return (
       <div>
+        {/* Main content starts here */}
         <Container>
           <div className="row mx-auto">
             <div className="col-12 text-center">
@@ -200,6 +202,7 @@ export class CreatePost extends React.Component {
             </div>
           </div>
         </Container>
+        {/* Main content ends here */}
       </div>
     );
   }

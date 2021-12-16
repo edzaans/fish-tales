@@ -1,3 +1,4 @@
+// Import React
 import React from "react";
 import { Carousel, Container } from "react-bootstrap";
 
@@ -12,10 +13,14 @@ import pic4 from "../Images/pic4.jpg";
 import pic5 from "../Images/pic5.jpg";
 import pic6 from "../Images/pic6.jpg";
 
+// Main component class for Landing page
 export class Home extends React.Component {
+  // Render method
   render() {
+    // Return method
     return (
       <div>
+        {/* Carousel starts here */}
         <Carousel fade>
           <Carousel.Item>
             <img className="d-block w-100 fluid" src={lake} alt="First slide" />
@@ -45,7 +50,9 @@ export class Home extends React.Component {
             </Carousel.Caption>
           </Carousel.Item>
         </Carousel>
+        {/* Carousel ends here */}
 
+        {/* Main content section starts here */}
         <section>
           <main id="main" role="main">
             <section class="jumbotron text-center" id="mainBanner">
@@ -278,6 +285,7 @@ export class Home extends React.Component {
             </div>
           </main>
         </section>
+        {/* Main content section ends here */}
       </div>
     );
   }

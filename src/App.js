@@ -2,8 +2,10 @@
 import React from "react";
 import "bootstrap/dist/css/bootstrap.min.css";
 import { Navbar, Nav } from "react-bootstrap";
+
 // Imports logo from Images Folder
 import logo from "./Images/Header_image.jpg";
+
 // Import all Components
 import { AllPosts } from "./Components/AllPosts";
 import { CreatePost } from "./Components/CreatePost";

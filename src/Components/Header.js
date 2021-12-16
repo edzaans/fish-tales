@@ -1,9 +1,13 @@
-// @flow
+// Import React
 import React from "react";
+// Import Bootstrap Components
 import { Container, Navbar, Nav } from "react-bootstrap";
+// Import logo picture
 import logo from "../Images/Header_image.jpg";
 
+// Main Header class
 export class Header extends React.Component {
+  // Main RENDER method
   render() {
     return (
       <div class="container fluid">
